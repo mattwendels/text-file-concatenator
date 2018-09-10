@@ -6,7 +6,7 @@ Concatenate multiple text files into a single output. Useful for combining multi
 
 Select multiple files to concatenate. Drag and drop to re-order.
 
-![Main form](/Images/3_main-form.png)
+![Main form](/Images/3_main-form.png =750x472)
 
 ### Output
 
@@ -17,3 +17,5 @@ Output the concatenated files to a new window (and copy the contents) or to a se
 ### File Sets
 
 Save sets of files for concatenation for future use (.tfcset extension). Associate .tfcset files with the Text File Concatenator application to open the set by default in Windows.
+
+![Output](/Images/1_file_set.png)
