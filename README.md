@@ -6,7 +6,7 @@ Concatenate multiple text files into a single output. Useful for combining multi
 
 Select multiple files to concatenate. Drag and drop to re-order.
 
-![Main form](/Images/3_main-form.png =750x472)
+![Main form](/Images/3_main-form.png) <!-- .element width="785px" -->
 
 ### Output
 
