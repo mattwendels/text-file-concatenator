@@ -37,6 +37,9 @@
 			// 
 			// outputTextArea
 			// 
+			this.outputTextArea.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.outputTextArea.BackColor = System.Drawing.SystemColors.Window;
 			this.outputTextArea.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.outputTextArea.Location = new System.Drawing.Point(12, 12);
@@ -48,6 +51,7 @@
 			// 
 			// copyToClipboardButton
 			// 
+			this.copyToClipboardButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.copyToClipboardButton.Location = new System.Drawing.Point(12, 444);
 			this.copyToClipboardButton.Name = "copyToClipboardButton";
 			this.copyToClipboardButton.Size = new System.Drawing.Size(115, 23);
@@ -58,6 +62,7 @@
 			// 
 			// closeButton
 			// 
+			this.closeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.closeButton.Location = new System.Drawing.Point(713, 444);
 			this.closeButton.Name = "closeButton";
 			this.closeButton.Size = new System.Drawing.Size(75, 23);
