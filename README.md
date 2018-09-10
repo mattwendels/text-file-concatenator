@@ -2,6 +2,10 @@
 
 Concatenate multiple text files into a single output. Useful for combining multiple scripts (for initialization of a project or application etc.) to be run at once.
 
+## Download
+
+Download the latest version (v1) [here](https://github.com/mattwendels/text-file-concatenator/raw/master/Downloads/v1/Text%20File%20Concatenator.exe).
+
 ### Overview
 
 Select multiple files to concatenate. Drag and drop to re-order.
