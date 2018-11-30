@@ -73,6 +73,7 @@
 			// 
 			// copyToClipboardLabel
 			// 
+			this.copyToClipboardLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.copyToClipboardLabel.AutoSize = true;
 			this.copyToClipboardLabel.ForeColor = System.Drawing.Color.Green;
 			this.copyToClipboardLabel.Location = new System.Drawing.Point(133, 449);

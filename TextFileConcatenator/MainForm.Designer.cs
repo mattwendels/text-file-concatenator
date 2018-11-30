@@ -204,6 +204,7 @@
 			// 
 			// saveStatusLabel
 			// 
+			this.saveStatusLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.saveStatusLabel.AutoSize = true;
 			this.saveStatusLabel.ForeColor = System.Drawing.Color.Green;
 			this.saveStatusLabel.Location = new System.Drawing.Point(325, 364);
