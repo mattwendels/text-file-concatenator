@@ -20,6 +20,7 @@ namespace TextFileConcatenator
 
         private string _activeFileSetPath = null;
         private string _filesetFilter = "Text File Concatenator Fileset (*.tfcset)|*.tfcset";
+        private string _scriptFilesFilter = "Script files (*.txt;*.sql;*.plpgsql)|*.txt;*.sql;*.plpgsql|";
 
         public MainForm(string file)
 		{
@@ -140,9 +141,7 @@ namespace TextFileConcatenator
 
 		private void selectFilesButton_Click(object sender, System.EventArgs e)
 		{
-			selectFilesDialog.Filter =
-				"Script files (*.txt;*.sql;*.plpgsql)|*.txt;*.sql;*.plpgsql|" +
-				"All files (*.*)|*.*";
+			selectFilesDialog.Filter = _scriptFilesFilter + "All files (*.*)|*.*";
 
 			selectFilesDialog.Multiselect = true;
 			selectFilesDialog.Title = "Select text files";
@@ -151,27 +150,32 @@ namespace TextFileConcatenator
 
 			if (dialogResult == DialogResult.OK)
 			{
-                _hasUnsavedChanges = true;
+                SetUnsaved();
 
-                if (!string.IsNullOrWhiteSpace(_activeFileSetPath))
-                {
-                    ActiveForm.Text = $"Text File Concatentor - {_activeFileSetPath}*";
-                }
-
-				foreach (var fileName in selectFilesDialog.FileNames)
+                foreach (var fileName in selectFilesDialog.FileNames)
 				{
-					concatAndSaveButton.Enabled = true;
-					concatAndViewButton.Enabled = true;
+                    AddToDataGridList(fileName);
 
-                    if (!fileDataGrid.Rows.Cast<DataGridViewRow>().Any(r => r.Cells[0].Value.ToString() == fileName))
-                    {
-                        fileDataGrid.Rows.Add(fileName);
-                    }
-				}
+                }
 			}
 		}
 
-		private void exitButton_Click(object sender, System.EventArgs e)
+        private void BtnBrowseFolders_Click(object sender, EventArgs e)
+        {
+            var dialogResult = selectFolderDialog.ShowDialog();
+
+            if (dialogResult == DialogResult.OK)
+            {
+                SetUnsaved();
+
+                foreach (var fileName in Directory.EnumerateFiles(selectFolderDialog.SelectedPath, "*.*", chkFolderSelectRecursive.Checked ? SearchOption.AllDirectories : SearchOption.TopDirectoryOnly))
+                {
+                    AddToDataGridList(fileName);
+                }
+            }
+        }
+
+        private void exitButton_Click(object sender, System.EventArgs e)
 		{
             if (ConfirmUnsavedChanges())
             {
@@ -304,12 +308,7 @@ namespace TextFileConcatenator
 
 		private void fileDataGrid_UserDeletedRow(object sender, DataGridViewRowEventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(_activeFileSetPath))
-            {
-                _hasUnsavedChanges = true;
-
-                ActiveForm.Text = $"Text File Concatentor - {_activeFileSetPath}*";
-            }
+            SetUnsaved();
         }
 
         #endregion
@@ -442,6 +441,27 @@ namespace TextFileConcatenator
 			}
 		}
 
-		#endregion
-	}
+        private void SetUnsaved()
+        {
+            _hasUnsavedChanges = true;
+
+            if (!string.IsNullOrWhiteSpace(_activeFileSetPath))
+            {
+                ActiveForm.Text = $"Text File Concatentor - {_activeFileSetPath}*";
+            }
+        }
+
+        private void AddToDataGridList(string fileName)
+        {
+            concatAndSaveButton.Enabled = true;
+            concatAndViewButton.Enabled = true;
+
+            if (!fileDataGrid.Rows.Cast<DataGridViewRow>().Any(r => r.Cells[0].Value.ToString() == fileName))
+            {
+                fileDataGrid.Rows.Add(fileName);
+            }
+        }
+
+        #endregion
+    }
 }
